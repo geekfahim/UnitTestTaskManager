@@ -23,14 +23,14 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-/*        $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'max:50'],
             'office_id' => ['required','numeric','digits_between:3,5'],
             'designation' => ['required', 'string'],
-            'email' => ['required','email'],
+            'email' => ['required','email',Rule::unique('employees','email')],
             'mobile' => ['required','digits:11'],
             'status' => ['required'],
-        ]);*/
+        ]);
         $item = new Employee();
         $item->name = $request->name;
         $item->office_id = $request->office_id;
@@ -40,6 +40,7 @@ class EmployeeController extends Controller
         $item->mobile = $request->mobile;
         $item->save();
         return redirect()->route('employee.index')
+//        return redirect('employee')
             ->with('message', 'Employee created successfully.');
     }
 
