@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class EmployeeTest extends TestCase
 {
-    use withFaker, RefreshDatabase;
+    use withFaker;
 
     public function test_Basic()
     {
@@ -24,10 +24,12 @@ class EmployeeTest extends TestCase
         $this->withoutExceptionHandling();
 
         $attributes = Employee::factory()->make()->toArray();
+        var_dump($attributes);
+       $this->post('employee', $attributes);
 
-        $this->post('employee', $attributes);
 
-        $this->assertDatabaseHas('employees', $attributes);
+       $this->assertDatabaseHas('employees', $attributes);
+
 
     }
 

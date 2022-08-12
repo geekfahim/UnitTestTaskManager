@@ -20,7 +20,6 @@ class EmployeeFactory extends Factory
             'designation'=>$this->faker->jobTitle(),
             'email' => $this->faker->unique()->safeEmail(),
             'mobile' => $this->faker->numerify('017########'),
-            'status' => $this->faker->numberBetween(1,3),
         ];
     }
 }

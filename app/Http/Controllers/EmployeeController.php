@@ -29,14 +29,13 @@ class EmployeeController extends Controller
             'designation' => ['required', 'string'],
             'email' => ['required','email',Rule::unique('employees','email')],
             'mobile' => ['required','digits:11'],
-            'status' => ['required'],
+//            'status' => ['required'],
         ]);
         $item = new Employee();
         $item->name = $request->name;
         $item->office_id = $request->office_id;
         $item->designation = $request->designation;
         $item->email = $request->email;
-        $item->mobile = $request->mobile;
         $item->mobile = $request->mobile;
         $item->save();
         return redirect()->route('employee.index')

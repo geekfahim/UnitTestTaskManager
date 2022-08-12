@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-
+    protected $guarded=[];
     CONST STATUSES = [1=>'Full-Time',2=>'Part-Time',3=>'Contract',4=>'Retired'];
 
 }
